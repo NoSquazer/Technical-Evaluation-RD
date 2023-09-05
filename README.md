@@ -4,11 +4,14 @@
 
 API - Python Backend Challenge
 
-Technologies used:
+Tech Stack:
 
 - [FastAPI](https://fastapi.tiangolo.com/)
 - [Uvicorn](https://www.uvicorn.org/)
-- [MongdoDB](https://www.mongodb.com/)
+- [SQLite](https://www.sqlite.org/index.html)
+- [SQLAlchemy](https://www.sqlalchemy.org)
+- [Pydantic](https://docs.pydantic.dev/latest/)
+- [Docker](https://www.docker.com/)
 
 ## Installation
 
@@ -16,68 +19,68 @@ Technologies used:
 git clone git@github.com:huntekapp/api.git
 ```
 
-### Create .env file
+### Setup for local environment
 
 ```bash
-cp .env.example .env
-```
-
-### Instrall requirements
-
-```bash
-pip install -r requirements/requirements.txt
-```
-
-### Setup for local development
-
-```bash
-uvicorn src.main:app --host 0.0.0.0 --port 8000 --reload
+docker compose -f docker-compose-dev.yml up --build
 ```
 
 ## API Routes
 
-### Route 1: /api/month/resume
+### Route 1: /api/db/input/{my_target_field}
 
-- Method: GET
+- Method: POST
 - Parameters:
-- `month`: Month in MM-YYYY format.
-- `company`: Business name or identifier.
+- `field_1`: Some data.
+- `author`: Some author data.
+- `description`: Even more data.
+- `my_numeric_field`: A number.
 
 - Example Request:
 
 ```bash
-  GET /api/month/resume?month=05-2023&company=623a020283ecc98fe0bf34e2
+  POST /api/db/input/description
 ```
 
-- Example Response:
+- Body:
 
 ```bash
   {
-  "id": 0
+  "field_1": "Argentino",
+  "author": "Roberto",
+  "description": "Nació en Córdoba, Argentina y le gusta el mate.",
+  "my_numeric_field": 42
   }
 ```
 
-### Route 2: /api/month/billing
+- Example Response:
+
+```bash
+  {
+  "id": 1
+  }
+```
+
+### Route 2: /api/db/get_data/{id}
 
 - Method: GET
 - Parameters:
-- `month`: Month in MM-YYYY format.
-- `company`: Business name or identifier.
+- `id`: Id of the data to get.
 
 - Example Request:
 
 ```bash
-  GET /api/month/billing?month=05-2023&company=623a020283ecc98fe0bf34e2
+  GET /api/db/get_data/1
 ```
 
 - Example Response:
 
 ```bash
   {
-  "id": 0,
-  "field_1": "string",
-  "author": "string",
-  "description": "string",
-  "my_numeric_field": 0
+  "id": 1,
+  "field_1": "Argentino",
+  "author": "Roberto",
+  "description": "NACIÓ EN CÓRDOBA, ARGENTINA Y LE GUSTA EL MATE.",
+  "my_numeric_field": 42
   }
 ```
