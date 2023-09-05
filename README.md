@@ -13,6 +13,19 @@ Tech Stack:
 - [Pydantic](https://docs.pydantic.dev/latest/)
 - [Docker](https://www.docker.com/)
 
+## Hosting
+
+This app is hosted via FL0.
+[This is the link](https://technical-evaluation-rd-jwc2-dev.fl0.io/)
+
+## Note for Credentials
+
+The credentials can be change in src/auth/auth.py line 10 and 11.
+The default credentials are:
+
+- `user`: admin
+- `password`: password
+
 ## Installation
 
 ```bash
