@@ -1,6 +1,3 @@
-# Python
-from functools import lru_cache
-
 # FastAPI
 from fastapi import FastAPI
 from fastapi.responses import RedirectResponse
@@ -8,12 +5,10 @@ from fastapi.middleware.cors import CORSMiddleware
 
 # SrcUtilities
 from src.router import api_router
-from src.config import Settings
 
-settings = Settings()
 
 app = FastAPI(
-    title=settings.PROJECT_NAME,
+    title="RD Test",
     description="Techinal evaluation for RD",
     version="1.0.0",
 )
@@ -28,11 +23,6 @@ app.add_middleware(
 )
 
 
-@lru_cache()
-def get_settings():
-    return Settings()
-
-
 @app.on_event("shutdown")
 def close_db_connection():
     from src.dependencies import get_db
@@ -41,7 +31,7 @@ def close_db_connection():
     db.close()
 
 
-app.include_router(api_router, prefix=settings.API_V1_STR)
+app.include_router(api_router, prefix="/api")
 
 
 @app.get("/", response_class=RedirectResponse, include_in_schema=False)
