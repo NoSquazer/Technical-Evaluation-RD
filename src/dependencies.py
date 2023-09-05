@@ -1,7 +1,6 @@
 # Python
 from sqlalchemy.orm import Session
 
-
 # SrcUtilities
 from sqlalchemy.orm import Session
 from src.database.session import SessionLocal
