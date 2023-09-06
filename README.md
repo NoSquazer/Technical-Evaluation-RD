@@ -29,7 +29,7 @@ The default credentials are:
 ## Installation
 
 ```bash
-git clone git@github.com:huntekapp/api.git
+git clone https://github.com/NoSquazer/Technical-Evaluation-RD.git
 ```
 
 ## Note for Windows users
