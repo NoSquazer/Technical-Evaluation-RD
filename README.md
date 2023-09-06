@@ -32,11 +32,13 @@ The default credentials are:
 git clone https://github.com/NoSquazer/Technical-Evaluation-RD.git
 ```
 
-## Note for Windows users
+## IMPORTANT
+
+### Note for Windows users
 
 If you are using Windows, maybe the **entrypoint.sh** use a different end of line character.
 
-- Check the end of line character of the **entrypoint.sh** file, it should be **LF**.
+- Check the end of line character of the **entrypoint.sh** file, it SHOULD be **LF**.
 - If it is not LF, change it to LF.
 - In VSCode you can change it in the bottom right corner. It should say **CRLF**, click on it and change it to **LF**.
 
